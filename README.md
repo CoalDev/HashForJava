@@ -1,8 +1,9 @@
 ## Hash class for java
-### Constructor:
+### **Constructor:**
   - ### Hash(String hashType, String salt)
     - **hashType** - the type of the has, for example "SHA-512", you can lookup on google the types there are on java
     - **salt** - The salt that will be used on the hash
+### **Functions:**
 ### getStringHash(String passToHash)
 - **passToHash** - The phrase to hash
 - _**RETURNS**_ - Returns the salted hash
