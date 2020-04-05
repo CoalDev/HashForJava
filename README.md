@@ -1,2 +1,3 @@
-# HashForJava
-a java class for creating salted hashes
+## Hash class for java
+#### Constructor:
+###### Hash(String hashType, String salt)
