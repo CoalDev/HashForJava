@@ -51,19 +51,7 @@ public class Hash{
         
         return sb.toString();
     }    
-
-
-    // public String getStringHash(String passToHash){
-    //     //this.rand.nextBytes(this.salt);
-    //     //this.md.update(this.salt);
-    //     this.hashedPass = md.digest(passToHash.getBytes(StandardCharsets.UTF_8));
-    //     StringBuilder sb = new StringBuilder();
-    //     for (byte b : this.hashedPass)
-    //         sb.append(String.format("%02x", b));
-        
-    //     return sb.toString();
-    // }
-
+    
     /**
      * Sets the salt with a byte array
      * @param salt - byte array to set salt
