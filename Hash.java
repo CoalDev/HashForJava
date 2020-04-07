@@ -5,7 +5,7 @@ import java.security.*;
  * Class for hashing and salting
  * 
  * @author Lior Ichilov
- * @version 0.2
+ * @version 0.3.5
  * 
  * Using the java security library we make a salted hash
  */
@@ -15,20 +15,29 @@ public class Hash{
     byte[] salt;
     byte[] hashedPass;
     
-    // Constructor
+    // ConstructorS:
     /**
-     * Creates a Hash object with a hashtype and a salt
+     * Creates a Hash object with a hashtype and a 16 byte salt
      * @param hashType - Example, ("SHA-256"), ("SHA-512")
      * @param salt - Salting the hash with
      * @throws NoSuchAlgorithmException - so we don't have to make a try and finally block
      */
     public Hash(String hashType, String salt) throws NoSuchAlgorithmException{
-        //this.salt = new byte[16];
         this.salt = salt.getBytes();
         this.rand = new SecureRandom();
-        //this.rand.nextBytes(this.salt);
         this.md = MessageDigest.getInstance(hashType); // "SHA-512"
-        //this.md.update(this.salt);
+    }
+
+    /**
+     * Creates a Hash object with a hashtype and a random 16 byte salt
+     * @param hashType - Example, ("SHA-256"), ("SHA-512")
+     * @throws NoSuchAlgorithmException - so we don't have to make a try and finally block
+     */
+    public Hash(String hashType) throws NoSuchAlgorithmException{
+        this.salt = new byte[16];
+        this.rand = new SecureRandom();
+        this.rand.nextBytes(this.salt);
+        this.md = MessageDigest.getInstance(hashType); // "SHA-512"
     }
 
     /**
@@ -50,8 +59,8 @@ public class Hash{
             sb.append(String.format("%02x", b));
         
         return sb.toString();
-    }    
-    
+    }
+
     /**
      * Sets the salt with a byte array
      * @param salt - byte array to set salt
